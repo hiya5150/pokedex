@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
-import {Pokemon} from '../pokemon';
+import {Pokemon, PokemonData} from '../pokemon';
 
 @Injectable({
   providedIn: 'root'
@@ -23,14 +23,17 @@ export class PokemonService {
   // get list of PokemonsPo
   // private pokemons: Pokemon;
   getPokemonList(): Observable<Pokemon[]> {
-    return this.http.get<Pokemon[]>(this.baseUrl + `pokemon?offset=1&limit=150`);
+    return this.http.get<Pokemon[]>(this.baseUrl + `pokemon?limit=150`);
   //     .pipe(map(this.pokemons: Pokemon[]) =>
   // this.pokemons.map(pokemon => pokemon.name));
 
   }
 
-  getPokemonDetail(name: any): Observable<any[]> {
-    return this.http.get<any[]>(this.baseUrl + 'pokemon/' + name);
+  getPokemonDetail(url: string): Observable<string[]> {
+    return this.http.get<string[]>(this.baseUrl + 'pokemon/' + url);
+    // const url =
   }
+
+
 
 }

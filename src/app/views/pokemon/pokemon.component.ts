@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Pokemon} from '../../models/pokemon';
+import {Pokemon, PokemonData, Result} from '../../models/pokemon';
 import {PokemonService} from '../../models/services/pokemon.service';
 import {ActivatedRoute} from '@angular/router';
 import {CommonModule} from '@angular/common';
@@ -12,10 +12,11 @@ import {of} from 'rxjs';
   styleUrls: ['./pokemon.component.css']
 })
 export class PokemonComponent implements OnInit {
-  public pokemon: Pokemon;
-  public id: string;
+  public pokemon: Pokemon[];
   public name: string;
+  public url: string;
   public type: string;
+  // public results: Result[];
 
   constructor(private pokemonService: PokemonService, private route: ActivatedRoute) {
   }
@@ -27,13 +28,9 @@ export class PokemonComponent implements OnInit {
     res => {
   // this.pokemon = (res as Pokemon[]);
   this.pokemon = JSON.parse(JSON.stringify(res));
-  // res.pipe(map((res.name,  ) =>
-  //     return value.name)/
 
-  // console.log(res.name);
   console.log(this.pokemon);
-  console.log(this.pokemon[1]);
-  // console.log(this.name);
+
 
 
   // res.forEach((item) => {
@@ -51,6 +48,7 @@ export class PokemonComponent implements OnInit {
 
   ngOnInit(): void {
   this.getPokemonList();
+  // this.getPokemonDetail();
   }
 
 }
