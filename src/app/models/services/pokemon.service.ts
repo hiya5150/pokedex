@@ -21,9 +21,9 @@ export class PokemonService {
   //   return this.http.get<any[]>(this.baseUrl + 'search/pokemon?q=' + query);
   // }
   // get list of PokemonsPo
-  private pokemons: Pokemon;
+  // private pokemons: Pokemon;
   getPokemonList(): Observable<Pokemon[]> {
-    return this.http.get<any[]>(this.baseUrl + `pokemon?offset=1&limit=150`);
+    return this.http.get<Pokemon[]>(this.baseUrl + `pokemon?offset=1&limit=150`);
   //     .pipe(map(this.pokemons: Pokemon[]) =>
   // this.pokemons.map(pokemon => pokemon.name));
 

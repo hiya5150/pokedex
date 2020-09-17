@@ -12,7 +12,7 @@ import {of} from 'rxjs';
   styleUrls: ['./pokemon.component.css']
 })
 export class PokemonComponent implements OnInit {
-  public pokemon: Pokemon[];
+  public pokemon: Pokemon;
   public id: string;
   public name: string;
   public type: string;
@@ -25,13 +25,15 @@ export class PokemonComponent implements OnInit {
   //   ).subscribe();
   this.pokemonService.getPokemonList().subscribe(
     res => {
-  this.pokemon = (res as Pokemon[]);
-
+  // this.pokemon = (res as Pokemon[]);
+  this.pokemon = JSON.parse(JSON.stringify(res));
   // res.pipe(map((res.name,  ) =>
   //     return value.name)/
 
-  //     this.pokemons = [];
+  // console.log(res.name);
   console.log(this.pokemon);
+  console.log(this.pokemon[1]);
+  // console.log(this.name);
 
 
   // res.forEach((item) => {
