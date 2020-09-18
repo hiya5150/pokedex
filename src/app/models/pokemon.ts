@@ -3,13 +3,15 @@ export class Pokemon {
   name: string;
   url: string;
   results: Result[];
+
 }
 
 export interface Result {
   results: Result[];
 }
 export class PokemonData {
-  id: number;
+  pokemonId: number;
+  pokemonUrl: string;
   name: string;
   height: number;
   weight: number;

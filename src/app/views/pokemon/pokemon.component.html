@@ -1,6 +1,18 @@
-<p>pokemon works!</p>
-<div *ngFor="let res of pokemon.results">{{res.name}}</div>
-<div *ngFor="let res of pokemon.results">{{res.url}}</div>
+<h1>POKEDEX</h1>
+<mat-accordion *ngIf="pokemon">
+  <!--*ngFor iterates through POKEMONS that are returned after http call is made-->
+  <mat-expansion-panel *ngFor="let res of pokemon?.results">
+    <mat-expansion-panel-header>
+      <mat-panel-title> {{res?.name}}</mat-panel-title>
+    </mat-expansion-panel-header>
+    <div>
+      <mat-panel-description>
+        <p>URL: {{res.url}}</p>
+        <p>height: {{res.height}}</p>
+      </mat-panel-description>
+    </div>
+<!--    <button  mat-raised-button color="primary"  routerLink="/pokemonData/{{res.name}}">Pokemon Details</button>-->
+<!--    (click)="openModal()"-->
 
-<!--<div *ngFor="let res2 of pokemonData."-->
-
+  </mat-expansion-panel>
+</mat-accordion>
