@@ -3,6 +3,7 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
 import {Pokemon, PokemonData} from '../pokemon';
+import {Evolution} from '../evolution';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,15 @@ export class PokemonService {
     return this.http.get<Pokemon>((this.baseUrl + 'pokemon/' + `${name}`));
 
   }
+
+  getEvolutionData(id: string): Observable<Evolution> {
+  return this.http.get<Evolution>((this.baseUrl + 'evolution-chain/' + `${id}`));
+  }
+  //
+  // getPokemonbyId(id: string): Observable<Pokemon> {
+  //   return this.http.get<Pokemon>((this.baseUrl + 'pokemon/' + `${id}`));
+  //
+  // }
 
 
 

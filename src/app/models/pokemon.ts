@@ -15,6 +15,7 @@ export class PokemonData {
   name: string;
   height: number;
   weight: number;
+  id: number;
   // abilities: string;
   // public evolutionChainID: number;
   }

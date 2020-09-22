@@ -1,18 +1,47 @@
-<h1>POKEDEX</h1>
-<mat-accordion *ngIf="pokemon">
-  <!--*ngFor iterates through POKEMONS that are returned after http call is made-->
-  <mat-expansion-panel *ngFor="let res of pokemon?.results">
-    <mat-expansion-panel-header>
-      <mat-panel-title> {{res?.name}}</mat-panel-title>
-    </mat-expansion-panel-header>
-    <div>
-      <mat-panel-description>
-        <p>URL: {{res.url}}</p>
-        <p>height: {{res.height}}</p>
-      </mat-panel-description>
-    </div>
+<!--<mat-accordion *ngIf="pokemon">-->
+<!--  &lt;!&ndash;*ngFor iterates through POKEMONS that are returned after http call is made&ndash;&gt;-->
+<!--  <mat-expansion-panel *ngFor="let res of pokemon?.results">-->
+<!--    <mat-expansion-panel-header>-->
+<!--      <mat-panel-title> {{res?.name}}</mat-panel-title>-->
+<!--    </mat-expansion-panel-header>-->
+<!--    <div>-->
+<!--      <mat-panel-description>-->
+<!--        <p>URL: {{res.url}}</p>-->
+<!--        <p>height: {{res.height}}</p>-->
+<!--      </mat-panel-description>-->
+<!--    </div>-->
 <!--    <button  mat-raised-button color="primary"  routerLink="/pokemonData/{{res.name}}">Pokemon Details</button>-->
-<!--    (click)="openModal()"-->
+<!--&lt;!&ndash;    (click)="openModal()"&ndash;&gt;-->
 
-  </mat-expansion-panel>
-</mat-accordion>
+<!--  </mat-expansion-panel>-->
+<!--</mat-accordion>-->
+<div class="table"  *ngIf="pokemon">
+  <h1 matColumnDef="title">POKEDEX</h1>
+<!--  <table mat-table #table [dataSource]="dataSource" class="mat-elevation-z8" multiTemplateDataRows>-->
+    <table mat-table [dataSource]="pokemon.results" class="mat-elevation-z8" multiTemplateDataRows>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+<!--  <td mat-cell *matCellDef="let res"> {{res?.name}} </td>-->
+      <td mat-cell *matCellDef="let res"> {{res.name}} </td>
+    </ng-container>
+    <ng-container matColumnDef="url">
+      <th mat-header-cell *matHeaderCellDef> URL </th>
+      <td mat-cell *matCellDef="let res"> {{res.url}} </td>
+    </ng-container>
+    <ng-container matColumnDef="pokemonDetails">
+      <th mat-header-cell *matHeaderCellDef> Pokemon Details </th>
+      <td mat-cell *matCellDef="let res">
+        <button mat-raised-button color="primary" routerLink="/pokemonData/{{res.name}}">Pokemon Details</button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayPokemonColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayPokemonColumns;"
+        class="example-element-row"
+        [class.example-expanded-row]="expandedElement === row"
+        (click)="expandedElement = expandedElement === row ? null : row"></tr>
+    </table>
+  <mat-paginator #paginator
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 20]">
+  </mat-paginator>
+</div>

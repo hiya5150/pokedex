@@ -2,3 +2,14 @@
 <!--<div *ngFor="let res of pokemonData | keyvalue">Height: {{res?.height}}</div>-->
 <!--  <div>height</div>-->
 <!--</ng-container>-->
+<div>
+  <mat-card class="card" *ngIf="pokemonData">
+    <mat-card-title>Pokemon Details</mat-card-title>
+    <mat-card-subtitle>Pokemon ID: {{pokemonData.id}}</mat-card-subtitle>
+    <mat-card-subtitle>Pokemon Height: {{pokemonData.height}}</mat-card-subtitle>
+    <mat-card-subtitle>Pokemon Weight: {{pokemonData.weight}}</mat-card-subtitle>
+
+    <button mat-stroked-button color="warn" routerLink="/evolution/{{pokemonData.id}}">Evolution</button>
+
+  </mat-card>
+</div>

@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {PokemonData} from '../../models/pokemon';
 import {PokemonService} from '../../models/services/pokemon.service';
+
+
 
 @Component({
   selector: 'app-pokemon-data',
@@ -12,24 +14,38 @@ export class PokemonDataComponent implements OnInit {
   // @Input() id: string;
   pokemonData: PokemonData[];
   // pokemonData: PokemonData;
-
   private name: string;
+  // private height: number;
+  private id: number;
 
-  constructor(private pokemonService: PokemonService, private route: ActivatedRoute) {
-        this.name = this.route.snapshot.paramMap.get('name');
-  }
+             constructor(private pokemonService: PokemonService,
+                         private route: ActivatedRoute,
+                         private activatedRoute: ActivatedRoute,
+                         ) {
+
+
+               this.name = this.route.snapshot.paramMap.get('name');
+
+             }
+
     onLoadPokemonByName(): void {
     this.pokemonService.getPokemonbyName(this.name).subscribe(
       res => {
-        console.log(this.name);
+
         this.pokemonData = JSON.parse(JSON.stringify(res));
+        console.log(this.name);
+        this.id = this.pokemonData.id;
+        console.log(this.id);
         console.log(this.pokemonData);
+
       }
     );
 
   }
+
   ngOnInit(): void {
     this.onLoadPokemonByName();
+    // this.onLoadPokemonId();
   }
 
 }
