@@ -12,8 +12,8 @@ import {PokemonService} from '../../models/services/pokemon.service';
 })
 export class PokemonDataComponent implements OnInit {
   // @Input() id: string;
-  pokemonData: PokemonData[];
-  // pokemonData: PokemonData;
+  // pokemonData: PokemonData[];
+  pokemonData: PokemonData;
   private name: string;
   // private height: number;
   private id: number;

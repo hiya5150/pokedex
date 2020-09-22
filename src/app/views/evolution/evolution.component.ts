@@ -12,8 +12,8 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class EvolutionComponent implements OnInit {
 
-pokemonData: PokemonData[];
-evolution: Evolution[];
+pokemonData: PokemonData;
+evolution: Evolution;
 private id: string;
   // @ts-ignore
   // @ts-ignore
