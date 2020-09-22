@@ -11,11 +11,9 @@ import {PokemonService} from '../../models/services/pokemon.service';
   styleUrls: ['./pokemon-data.component.css']
 })
 export class PokemonDataComponent implements OnInit {
-  // @Input() id: string;
-  // pokemonData: PokemonData[];
+
   pokemonData: PokemonData;
   private name: string;
-  // private height: number;
   private id: number;
 
              constructor(private pokemonService: PokemonService,
@@ -45,7 +43,6 @@ export class PokemonDataComponent implements OnInit {
 
   ngOnInit(): void {
     this.onLoadPokemonByName();
-    // this.onLoadPokemonId();
   }
 
 }

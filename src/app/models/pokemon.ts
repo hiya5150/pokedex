@@ -2,13 +2,13 @@ export class Pokemon {
   // this class contains properties that contain information on Pokemons
   name: string;
   url: string;
-  results: Result[];
+  // results: Result[];
 
 }
-
-export interface Result {
-  results: Result[];
-}
+//
+// export interface Result {
+//   results: Result[];
+// }
 export class PokemonData {
   pokemonId: number;
   pokemonUrl: string;
