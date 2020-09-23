@@ -27,7 +27,7 @@ private id: string;
     this.pokemonService.getEvolutionData(this.id).subscribe((
       res => {
         console.log(this.id);
-        this.evolution = JSON.parse(JSON.stringify(res));
+        this.evolution = res;
         console.log(this.evolution);
       }
     ));

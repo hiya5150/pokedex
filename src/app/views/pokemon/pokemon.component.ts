@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Pokemon, PokemonData} from '../../models/pokemon';
 import {PokemonService} from '../../models/services/pokemon.service';
 import {ActivatedRoute} from '@angular/router';
@@ -30,18 +30,17 @@ export class PokemonComponent implements OnInit {
     res => {
   this.pokemon = res;
   this.dataSource = new MatTableDataSource(res?.results);
-  // this.dataSource.paginator = this.paginator;
-  // this.dataSource.data = this.pokemon;
+  this.dataSource.paginator = this.paginator;
 
-  setTimeout(() => {
-        this.dataSource.paginator = this.paginator;
 
-      });
+  // setTimeout(() => {
+  //       this.dataSource.paginator = this.paginator;
+  //
+  //     });
   console.log(this.dataSource);
     });
 
   }
-
 
   ngOnInit(): void {
   this.onLoadPokemonList();
