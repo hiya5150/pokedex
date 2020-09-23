@@ -16,9 +16,9 @@ export class PokemonComponent implements OnInit {
   public url: string;
   public type: string;
   expandedElement: PokemonData | null;
-  dataSource = new MatTableDataSource();
+  public dataSource: MatTableDataSource<Pokemon>;
   displayPokemonColumns: string[] = ['name', 'url', 'pokemonDetails'];
-  @ViewChild(MatPaginator, {read: true}) paginator: MatPaginator;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
 
   constructor(private pokemonService: PokemonService, private route: ActivatedRoute) {
@@ -29,7 +29,10 @@ export class PokemonComponent implements OnInit {
   this.pokemonService.getPokemonList().subscribe(
     res => {
   this.pokemon = res;
-  this.dataSource.data = this.pokemon;
+  this.dataSource = new MatTableDataSource(res?.results);
+  // this.dataSource.paginator = this.paginator;
+  // this.dataSource.data = this.pokemon;
+
   setTimeout(() => {
         this.dataSource.paginator = this.paginator;
 
